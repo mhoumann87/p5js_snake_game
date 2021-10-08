@@ -1,5 +1,5 @@
 class Snake {
-  constructor() {
+  constructor(rez) {
     // The "snake" need to be an array, do we can extend it
     this.body = [];
     // The head is a vector starting in top left corner
@@ -7,6 +7,8 @@ class Snake {
     // Set the direction for the snake
     this.xDir = 0;
     this.yDir = 0;
+
+    this.size = rez;
   }
 
   // Function to move the snake based on the key pressed
@@ -24,6 +26,6 @@ class Snake {
     noStroke();
     fill(255);
 
-    rect(this.body[0].x, this.body[0].y, 10, 10);
+    rect(this.body[0].x, this.body[0].y, this.size, this.size);
   }
 }

@@ -5,6 +5,8 @@
  */
 
 let snake;
+// Const to decide how big the snake parts are
+const rez = 10;
 
 function setup() {
   // Store the canvas in a variable
@@ -13,7 +15,7 @@ function setup() {
   myCanvas.parent('game');
 
   // Create a new snake
-  snake = new Snake();
+  snake = new Snake(rez);
 }
 
 // The keyPressed function is a p5js function that runs every time user
