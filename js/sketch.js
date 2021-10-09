@@ -25,15 +25,19 @@ function keyPressed() {
 
   switch (keyCode) {
     case LEFT_ARROW:
+    case 65:
       snake.setDir(-1, 0);
       break;
     case RIGHT_ARROW:
+    case 68:
       snake.setDir(1, 0);
       break;
     case UP_ARROW:
+    case 87:
       snake.setDir(0, -1);
       break;
     case DOWN_ARROW:
+    case 83:
       snake.setDir(0, 1);
       break;
   }

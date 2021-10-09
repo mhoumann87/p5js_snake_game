@@ -121,7 +121,32 @@
         </section>
       </div>
     </footer>
+    <!--  We want to prevent the screen scrolling when we play the game, and this
+          code will do that -->
+    <script>
+      const keys = {};
 
+      window.addEventListener(
+        'keydown',
+        e => {
+          keys[e.code] = true;
+
+          switch (e.code) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+            case 'ArrowLeft':
+            case 'ArrowRight':
+            case 'Space':
+              e.preventDefault();
+              break;
+            // do not affect other keys
+            default:
+              break;
+          }
+        },
+        false
+      );
+    </script>
     <script src="./js/sketch.js"></script>
     <script src="js/snake.js"></script>
   </body>
