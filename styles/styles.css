@@ -1,0 +1,159 @@
+:root {
+  /* colors */
+  --col-body: #babdbf;
+  --col-text: #0d0d0d;
+  --col-hover: #a67a29;
+  --col-header: #3f3a40;
+  --col-accent: #73685f;
+
+  /* fonts */
+
+  --fs-small: 1.125rem;
+  --fs-normal: 1.3rem;
+  --fs-large: 2rem;
+  --fs-xlarge: 4rem;
+
+  --fw-reg: 400;
+  --fw-light: 200;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 'header' 'main' 'footer';
+  font-family: 'Poppins', sans-serif;
+  font-weight: var(--fw-reg);
+  font-size: var(--fs-normal);
+  background-color: var(--col-body);
+}
+
+.container {
+  width: 70%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.header {
+  background-color: var(--col-header);
+  padding: 0 0;
+  margin-bottom: 1em;
+}
+
+.header__content a {
+  text-decoration: none;
+  margin: 0;
+}
+
+.header__content a h1 {
+  color: var(--col-body);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-normal);
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.nav__list--link {
+  color: var(--col-body);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-reg);
+  position: relative;
+  transform: color 250ms ease;
+}
+
+.nav__list--link::after {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform 250ms ease;
+  transform: scaleX(0);
+}
+
+.nav__list--link.active {
+  color: var(--col-hover);
+}
+
+.nav__list--link.active::after {
+  transform: scaleX(1);
+}
+
+.nav__list--link:hover,
+.nav__list--link:focus {
+  color: var(--col-hover);
+}
+
+.nav__list--link:hover::after,
+.nav__list--link:focus::after {
+  transform: scaleX(1);
+}
+
+.headline {
+  padding: 2em 0;
+  text-align: center;
+}
+
+.headline h1 {
+  font-weight: var(--fw-light);
+  font-size: var(--fs-xlarge);
+}
+
+#game {
+  display: grid;
+  place-items: center;
+  margin-bottom: 1em;
+}
+
+.instructions {
+  padding: 0.5em 0;
+}
+
+.footer {
+  background-color: var(--col-accent);
+}
+
+.footer__content {
+  padding: 1em 0;
+}
+
+.social-box {
+  display: flex;
+  gap: 1.5em;
+}
+
+.social-box svg {
+  width: 2.5rem;
+}
