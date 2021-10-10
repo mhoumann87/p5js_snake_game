@@ -5,8 +5,8 @@
  */
 
 let snake, food, w, h;
-// Const to decide how big the snake parts are
-const rez = 10;
+// Set the resolution for the game
+const rez = 20;
 
 function setup() {
   // Store the canvas in a variable
@@ -14,19 +14,23 @@ function setup() {
   // So you can place it where you want on the page
   myCanvas.parent('game');
 
+  // Get width and height based on the resolution
+  w = floor(width / rez);
+  h = floor(height / rez);
+
+  // Set the frame rate so the game slows down a bit
+  frameRate(5);
   // Get the food location
   placeFood();
 
   // Create a new snake
-  snake = new Snake(rez);
+  snake = new Snake();
 }
 
 function placeFood() {
-  // Make x and d y for the location based on width and height
-  const x = floor(random(width));
-  const y = floor(random(height));
-
-  console.log(w, h, x, y);
+  // Make x and d y for the location based on w and h
+  const x = floor(random(w));
+  const y = floor(random(h));
 
   // Place the food on the canvas
   food = createVector(x, y);
@@ -58,14 +62,21 @@ function keyPressed() {
 }
 
 function draw() {
+  // Use out rez variable to scale every thing in the canvas
+  scale(rez);
+
   background(0);
   noStroke();
 
+  // Check to see if the food is eaten
+  if (snake.eat(food)) {
+    placeFood();
+  }
   // Update and show the snake based on the methods in the class
   snake.update();
   snake.show();
 
   // Put the food on the canvas and make it green
   fill(0, 255, 0);
-  rect(food.x, food.y, rez, rez);
+  rect(food.x, food.y, 1, 1);
 }
