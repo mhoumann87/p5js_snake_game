@@ -6,7 +6,7 @@
 
 let snake, food, w, h;
 // Set the resolution for the game
-const rez = 20;
+const rez = 10;
 
 function setup() {
   // Store the canvas in a variable
@@ -19,7 +19,7 @@ function setup() {
   h = floor(height / rez);
 
   // Set the frame rate so the game slows down a bit
-  frameRate(5);
+  frameRate(10);
   // Get the food location
   placeFood();
 
