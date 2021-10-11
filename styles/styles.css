@@ -137,9 +137,41 @@ h3 {
   margin-bottom: 1em;
 }
 
-.instructions {
+.instructions,
+.about {
   padding: 0.5em 0;
   text-align: center;
+}
+
+.about {
+  border-top: 1px solid #0003;
+}
+
+.about a {
+  text-decoration: none;
+  color: var(--col-hover);
+  position: relative;
+  transition: opacity 250ms ease;
+}
+
+.about a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  display: block;
+  transition: opacity 250ms ease;
+}
+
+.about a:hover {
+  opacity: 0.7;
+}
+
+.about a:hover::after {
+  opacity: 0.7;
 }
 
 .footer {
@@ -157,4 +189,10 @@ h3 {
 
 .social-box svg {
   width: 2.5rem;
+  transition: fill 250ms ease;
+}
+
+.social-box svg:hover,
+.social-box svg:hover {
+  fill: var(--col-hover);
 }
