@@ -81,4 +81,14 @@ function draw() {
   // Put the food on the canvas and make it green
   fill(0, 255, 0);
   rect(food.x, food.y, 1, 1);
+
+  // IF game over type game over in canvas
+  if (snake.endGame()) {
+    background(0);
+    textSize(4);
+    fill(255, 0, 0);
+    text('Game Over', w / 4.5, h * 0.5);
+
+    noLoop();
+  }
 }

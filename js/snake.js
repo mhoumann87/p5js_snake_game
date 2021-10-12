@@ -20,6 +20,30 @@ class Snake {
     this.body.push(head);
   }
 
+  // Function to check it game is over
+  endGame() {
+    // Get the x and y positions of the head
+    const x = this.body[this.body.length - 1].x;
+    const y = this.body[this.body.length - 1].y;
+
+    // If the snake touches one of the walls, the game is over
+    if (x > w || x < 0 || y > h || y < 0) {
+      return true;
+    }
+
+    // If the snake touches it self the game is over
+    for (let i = 0; i < this.body.length - 1; i++) {
+      // get the different parts of the snake
+      const part = this.body[i];
+      // Check to see if x and y is at the same place as the part
+      if (part.x == x && part.y == y) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   // Method to detect if the snake eats the food
   eat(pos) {
     const x = this.body[this.body.length - 1].x;
