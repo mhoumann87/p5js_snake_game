@@ -4,6 +4,7 @@
  * https://github.com/mhoumann87/p5js_snake_game
  */
 
+// Initiate the variables we need
 let snake, food, w, h;
 // Set the resolution for the game
 const rez = 10;
@@ -72,6 +73,7 @@ function draw() {
   if (snake.eat(food)) {
     placeFood();
   }
+
   // Update and show the snake based on the methods in the class
   snake.update();
   snake.show();

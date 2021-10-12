@@ -1,5 +1,7 @@
 class Snake {
   constructor() {
+    // A variable to store the length of the snake
+    this.length = 0;
     // The "snake" need to be an array, do we can extend it
     this.body = [];
     // The head is a vector starting in top left corner
@@ -9,13 +11,22 @@ class Snake {
     this.yDir = 0;
   }
 
+  // When the snake eats the food, it will get longer by i pixel,
+  // scaled to rez
+  grow() {
+    // Get the position of the head and make a copy
+    const head = this.body[this.body.length - 1].copy();
+    this.length++;
+    this.body.push(head);
+  }
+
   // Method to detect if the snake eats the food
   eat(pos) {
-    const x = this.body[0].x;
-    const y = this.body[0].y;
+    const x = this.body[this.body.length - 1].x;
+    const y = this.body[this.body.length - 1].y;
 
     if (x === pos.x && y === pos.y) {
-      console.log('Food Eaten');
+      this.grow();
       return true;
     }
     return false;
@@ -29,15 +40,24 @@ class Snake {
 
   // Move the snake
   update() {
-    this.body[0].x += this.xDir;
-    this.body[0].y += this.yDir;
+    // Make a copy of the "head" of the snake
+    const head = this.body[this.body.length - 1].copy();
+    // Pull position 0 in the array from the array
+    this.body.shift();
+    // Set the direction of the snake
+    head.x += this.xDir;
+    head.y += this.yDir;
+    // Push the head to the end of the snake
+    this.body.push(head);
   }
 
   // Put the snake on the canvas
   show() {
-    noStroke();
-    fill(255);
+    for (let i = 0; i < this.body.length; i++) {
+      noStroke();
+      fill(255);
 
-    rect(this.body[0].x, this.body[0].y, 1, 1);
+      rect(this.body[i].x, this.body[i].y, 1, 1);
+    }
   }
 }
